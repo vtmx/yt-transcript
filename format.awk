@@ -15,17 +15,20 @@ NF {
   # Remove a ocorrência de >>
   gsub(/>> /, "")
 
-  # Imprimi padrão
-  if (match($0, /^[A-Z]/)) {
-    if (firstline_exist == 0) {
-      printf "%s - %s ", start_time, $0
-      firstline_exist = 1
-    } else {
-      printf "\n%s - %s ", start_time, $0
-    }
-  } else {
-    printf "%s", $0
-  }
+  # Imprimi linha longa
+  # if (match($0, /^[A-Z]/)) {
+  #   if (firstline_exist == 0) {
+  #     printf "%s - %s ", start_time, $0
+  #     firstline_exist = 1
+  #   } else {
+  #     printf "\n%s - %s ", start_time, $0
+  #   }
+  # } else {
+  #   printf "%s", $0
+  # }
+
+  # Imprimi linha curta
+  print start_time " - " $0
 }
 
 END { print "" }
